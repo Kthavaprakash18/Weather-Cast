@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="header-icon">🌤️</span>
+        <h1 class="header-title">Weather Dashboard</h1>
+      </div>
+      <p class="header-subtitle">Real-time weather powered by Open-Meteo</p>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
+
+    <!-- Search Section -->
+    <section class="search-section" aria-label="City search">
+      <div class="search-card">
+        <div class="search-row">
+          <div class="input-wrapper">
+            <span class="input-icon">🔍</span>
+            <input
+              type="text"
+              id="cityInput"
+              class="city-input"
+              placeholder="Enter city name… e.g. Chennai"
+              aria-label="City name"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+          <button id="searchBtn" class="btn btn-primary" aria-label="Search weather">
+            Search
+          </button>
+          <button id="locationBtn" class="btn btn-secondary" aria-label="Use my location">
+            📍 My Location
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error Banner -->
+    <div id="errorBanner" class="error-banner hidden" role="alert" aria-live="polite">
+      <span class="error-icon">⚠️</span>
+      <span id="errorMessage"></span>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-wrapper hidden" aria-live="polite" aria-label="Loading weather data">
+      <div class="spinner"></div>
+      <p class="loading-text">Fetching weather data…</p>
+    </div>
+
+    <!-- Weather Dashboard (hidden until data loads) -->
+    <section id="weatherDashboard" class="weather-dashboard hidden" aria-label="Weather information">
+
+      <!-- City & Date Header -->
+      <div class="city-header">
+        <div class="city-info">
+          <h2 id="cityName" class="city-name">—</h2>
+          <p id="cityCountry" class="city-country">—</p>
+        </div>
+        <div class="date-time-info">
+          <p id="currentDate" class="current-date">—</p>
+          <p id="currentTime" class="current-time">—</p>
+        </div>
+      </div>
+
+      <!-- Hero Weather Card -->
+      <div class="hero-card">
+        <div class="hero-left">
+          <div id="weatherIcon" class="weather-icon" aria-hidden="true">🌤️</div>
+          <div class="hero-temp-block">
+            <span id="temperature" class="hero-temp">—</span>
+            <span class="hero-unit">°C</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <p id="weatherDescription" class="hero-description">—</p>
+          <p id="dayNightLabel" class="hero-day-night">—</p>
+        </div>
+      </div>
+
+      <!-- Info Cards Grid -->
+      <div class="cards-grid">
+
+        <article class="info-card" aria-label="Temperature">
+          <div class="card-icon">🌡️</div>
+          <div class="card-content">
+            <p class="card-label">Temperature</p>
+            <p class="card-value"><span id="cardTemp">—</span> °C</p>
+          </div>
+        </article>
+
+        <article class="info-card" aria-label="Feels like">
+          <div class="card-icon">🤔</div>
+          <div class="card-content">
+            <p class="card-label">Feels Like</p>
+            <p class="card-value"><span id="cardFeelsLike">—</span> °C</p>
+          </div>
+        </article>
+
+        <article class="info-card" aria-label="Humidity">
+          <div class="card-icon">💧</div>
+          <div class="card-content">
+            <p class="card-label">Humidity</p>
+            <p class="card-value"><span id="cardHumidity">—</span> %</p>
+          </div>
+        </article>
+
+        <article class="info-card" aria-label="Wind speed">
+          <div class="card-icon">💨</div>
+          <div class="card-content">
+            <p class="card-label">Wind Speed</p>
+            <p class="card-value"><span id="cardWind">—</span> km/h</p>
+          </div>
+        </article>
+
+        <article class="info-card" aria-label="Precipitation">
+          <div class="card-icon">🌧️</div>
+          <div class="card-content">
+            <p class="card-label">Precipitation</p>
+            <p class="card-value"><span id="cardPrecip">—</span> mm</p>
+          </div>
+        </article>
+
+        <article class="info-card" aria-label="Day or night">
+          <div class="card-icon" id="dayNightIcon">☀️</div>
+          <div class="card-content">
+            <p class="card-label">Day / Night</p>
+            <p class="card-value" id="cardDayNight">—</p>
+          </div>
+        </article>
+
+      </div><!-- /cards-grid -->
+
+    </section><!-- /weatherDashboard -->
+
+    <!-- Welcome / placeholder shown before any search -->
+    <div id="welcomeMsg" class="welcome-msg" aria-label="Welcome message">
+      <div class="welcome-inner">
+        <div class="welcome-icon">🌍</div>
+        <h2 class="welcome-title">Search for a city</h2>
+        <p class="welcome-sub">Enter any city name above or tap "My Location" to get started.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>Data provided by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · Requires an internet connection</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
